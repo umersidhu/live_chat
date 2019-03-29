@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-sm-8 image-box">
+  <%= link_to room_path(room), class: 'list-group-item' do %>
+    <div class="media room-item" data-room-id="<%= room.id %>">
+      <div class="media-left">
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><%= room.title %> <span class="badge"><%= room_unread_messages(room) %></span></h4>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  <div class="col-sm-4">
+    <div class="no-of-users">
+      No of active users: <span id="no_of_active"> <%= UserSignInCount.count %></span>
+    </div>
+
+    <div class="no-of-valid-users">
+      no of valid users: <%= " 0"%>
+    </div>
+    
+  </div>
+</div>
