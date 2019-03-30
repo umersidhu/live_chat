@@ -16,6 +16,7 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     current_user.user_sign_in_count.destroy
     ActionCable.server.broadcast('active_user', count: UserSignInCount.count)
+    ActionCable.server.broadcast('valid_user', count: UserSignInCount.valid_users)
     super
     new_user_session_path
   end

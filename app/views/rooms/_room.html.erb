@@ -10,14 +10,9 @@
     </div>
   <% end %>
   </div>
-  <div class="col-sm-4">
-    <div class="no-of-users">
-      No of active users: <span id="no_of_active"> <%= UserSignInCount.count %></span>
-    </div>
-
-    <div class="no-of-valid-users">
-      no of valid users: <%= " 0"%>
-    </div>
-    
+  <div class="col-sm-4" id="chat_box">
+    <%= render 'valid_users' %>
   </div>
 </div>
+<div id="countdown"></div>
+<div id="countdown2"></div>

@@ -1,25 +1,28 @@
-<section class="room-chat">
-<div class="container">
-
-<div class="room-info">
-  <h2><%= @room.title %></h2>
-</div>
-
-<div class="message-area">
-  <% @messages.each do |message| %>
-    <%= render 'rooms/message', message: message %>
-  <% end %>
-</div>
-
-<div class="message-form">
-  <%= form_for @message, url: room_messages_path(@room), remote: true, authencity_token: true do |f| %>
-    <div class="form-group">
-      <%= f.text_area :content, class: 'form-control', placeholder: 'Message...' %>
+<div class="row">
+  <div class="container">
+    
+    <div class="col-sm-7 image-box">
+      <h1>Chat</h1>
     </div>
-  <% end %>
-</div>
+    <div class="col-sm-5">
+      <section class="room-chat">
+        <div class="message-area">
+          <% @messages.each do |message| %>
+            <%= render 'rooms/message', message: message %>
+          <% end %>
+        </div>
 
+        <div class="message-form">
+          <%= form_for @message, url: room_messages_path(@room), remote: true, authencity_token: true do |f| %>
+            <div class="form-group">
+              <%= f.text_area :content, class: 'form-control', placeholder: 'Message...' %>
+            </div>
+          <% end %>
+        </div>
+
+      <%= hidden_field_tag :room_id, @room.id, id: 'room-id' %>
+      <%= hidden_field_tag :first_message_id, @messages&.first&.id, id: 'first-message-id' %>
+    </section>
+  </div>
+  </div>
 </div>
-<%= hidden_field_tag :room_id, @room.id, id: 'room-id' %>
-<%= hidden_field_tag :first_message_id, @messages&.first&.id, id: 'first-message-id' %>
-</section>

@@ -15,3 +15,33 @@
 //= require bootstrap/dropdown
 //= require_tree .
 //= require_tree ./channels
+
+
+function countdown( elementName, minutes, seconds )
+{
+    var endTime, hours, mins, msLeft, time;
+
+    function twoDigits( n )
+    {
+        return (n <= 9 ? "0" + n : n);
+    }
+
+    function updateTimer()
+    {
+        msLeft = endTime - (+new Date);
+        if ( msLeft < 1000 ) {
+            App.valid_user.valid_user_count()
+            countdown( "countdown", 1, 15 );
+        } else {
+            time = new Date( msLeft );
+            hours = time.getUTCHours();
+            mins = time.getUTCMinutes();
+            setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
+        }
+    }
+
+    endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
+    updateTimer();
+}
+
+countdown( "countdown", 1, 15 );

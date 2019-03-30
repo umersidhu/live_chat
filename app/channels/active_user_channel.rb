@@ -7,7 +7,7 @@ class ActiveUserChannel < ApplicationCable::Channel
   	
   end
 
-  def user_count(data)
-  	ActionCable.server.broadcast('active_user', count: data['count'])
+  def user_count
+  	ActionCable.server.broadcast('active_user', count: UserSignInCount.count)
   end
 end

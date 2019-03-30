@@ -1,5 +1,6 @@
 (function () {
   $("#no_of_users").hide();
+  $("#no_of_valid_users").hide();
   var roomId = $('#room-id').val();
   if (!roomId) return;
 
