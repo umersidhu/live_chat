@@ -8,6 +8,10 @@ class UserSignInCount < ApplicationRecord
 
   def self.chats_time
     last_signin = first.created_at
-    Time.now.minus_with_coercion(last_signin.localtime)
+    time_diffrence(last_signin)
   end  
+
+  def self.time_diffrence time
+  	Time.now.minus_with_coercion(time.localtime).to_i
+  end
 end

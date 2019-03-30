@@ -16,7 +16,7 @@
 //= require_tree .
 //= require_tree ./channels
 
-
+$(".chat-count-link").hide()
 function countdown( elementName, minutes, seconds )
 {
     var endTime, hours, mins, msLeft, time;
@@ -44,4 +44,30 @@ function countdown( elementName, minutes, seconds )
     updateTimer();
 }
 
-countdown( "countdown", 1, 15 );
+countdown( "countdown", 1, 2 );
+
+var minutesLabel = document.getElementById("minutes");
+var secondsLabel = document.getElementById("seconds");
+
+var totalSeconds = gon.sign_time;
+setInterval(setTime, 1000);
+
+function setTime()
+{
+    ++totalSeconds;
+    secondsLabel.innerHTML = pad(totalSeconds%60);
+    minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+}
+
+function pad(val)
+{
+    var valString = val + "";
+    if(valString.length < 2)
+    {
+        return "0" + valString;
+    }
+    else
+    {
+        return valString;
+    }
+}

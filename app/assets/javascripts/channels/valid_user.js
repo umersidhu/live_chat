@@ -8,7 +8,7 @@
     },
     received: function (data) {
       $("#no_of_valid").text(data['count'])
-      if (parseInt(data['count']) == 2 && location.href.split("/")[location.href.split("/").length - 1] != "1" ) {
+      if (parseInt(data['count']) >= 2 && location.href.split("/")[location.href.split("/").length - 1] != "1" ) {
         window.location.href = window.location.href;
       }
     },

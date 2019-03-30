@@ -113,6 +113,10 @@ GEM
     ffi (1.10.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gon (6.2.1)
+      actionpack (>= 3.0)
+      multi_json
+      request_store (>= 1.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     jquery-rails (4.3.3)
@@ -136,6 +140,7 @@ GEM
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
+    multi_json (1.13.1)
     nio4r (2.3.1)
     nokogiri (1.10.2)
       mini_portile2 (~> 2.4.0)
@@ -202,6 +207,8 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     redis (3.3.5)
+    request_store (1.4.1)
+      rack (>= 1.4)
     require_all (2.0.0)
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
@@ -310,6 +317,7 @@ DEPENDENCIES
   enumerize
   factory_girl_rails
   faker
+  gon
   jquery-rails
   listen (~> 3.0.5)
   pg (~> 0.18)
