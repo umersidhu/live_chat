@@ -1,13 +1,10 @@
 # frozen_string_literal: true
 class CreateRooms < ActiveRecord::Migration[5.0]
   def change
-    create_table :rooms, id: false do |t|
-      t.column  :id,       :primary_key, unsigned: true, null: false
-      t.integer :owner_id,               unsigned: true, null: false
-      t.integer :room_icon_id,           unsigned: true
-      t.text    :title,                                  null: false
+    create_table :rooms do |t|
+      t.text    :title
 
-      t.timestamps null: false
+      t.timestamps
     end
 
     add_index :rooms, :owner_id
