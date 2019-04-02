@@ -16,7 +16,6 @@
     },
     received: function (data) {
       $messageArea.append(this.renderMessage(data));
-      $messageForm.val('');
       scrollToBottom();
     },
     renderMessage: function (data) { return messageItemTmpl(data.username, data.content); }
@@ -38,6 +37,7 @@
       if (e.keyCode == 13 && !e.shiftKey) {
         e.preventDefault();
         $('form#new_message').submit();
+        $messageForm.val('');
       }
     });
   }
