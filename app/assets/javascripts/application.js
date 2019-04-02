@@ -49,13 +49,8 @@ countdown( "countdown", 1, 1 );
 var minutesLabel = document.getElementById("minutes");
 var secondsLabel = document.getElementById("seconds");
 
-if (gon.length > 0) {
-    var totalSeconds = gon.sign_time;
-}
-else {
-    var totalSeconds = 0;   
-}
 if (minutesLabel != null) {
+    var totalSeconds = gon.sign_time;
     setInterval(setTime, 1000);
 }
 

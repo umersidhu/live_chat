@@ -9,7 +9,7 @@ class RoomsController < ApplicationController
   end
 
   def show
-    gon.sign_time = UserSignInCount.time_diffrence(current_user.current_sign_in_at)
+    gon.sign_time = UserSignInCount.time_diffrence(current_user.current_sign_in_at) if current_user.present?
     return redirect_to root_path if UserSignInCount.valid_users < 2
     messages
   end
@@ -48,10 +48,12 @@ class RoomsController < ApplicationController
   end
 
   def messages
-    @room = Room.first || Room.create(title: "chat")
-    RoomUser.create_or_update!(@room.id, current_user.id, @messages&.last&.id)
-    @message = Message.new
-    @messages = @room.messages.last(40)
+    if current_user.present?
+      @room = Room.first || Room.create(title: "chat")
+      RoomUser.create_or_update!(@room.id, current_user.id, @messages&.last&.id)
+      @message = Message.new
+      @messages = @room.messages.last(40)
+    end
   end
 
   def sign_in_user

@@ -15,7 +15,6 @@
       App.cable.subscriptions.remove(this)
     },
     received: function (data) {
-      debugger
       $messageArea.append(this.renderMessage(data));
       $messageForm.val('');
       scrollToBottom();
