@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
     UserSignInCount.create!(user_id: current_user.id) if (current_user.present? && current_user.user_sign_in_count.blank?)
     @rooms = Room.all
     gon.sign_time = UserSignInCount.time_diffrence(current_user.current_sign_in_at)
-    return redirect_to room_path(Room.first) if UserSignInCount.valid_users > 1
+    return redirect_to room_path(Room.first) if UserSignInCount.valid_users > 2
   end
 
   def show
