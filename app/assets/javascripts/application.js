@@ -112,7 +112,7 @@ function tick() {
 
 function startCountdown() {
     // get contents of the "minutes" text box
-    var minutes = (15 * 60) - gon.chats_time;
+    var minutes = (16 * 60) - gon.chats_time;
     // check if not a number
     if (isNaN(minutes)) {
         return;
