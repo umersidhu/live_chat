@@ -7,7 +7,5 @@ class CreateRooms < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    add_index :rooms, :owner_id
-    add_index :rooms, :room_icon_id
   end
 end
