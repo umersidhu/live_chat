@@ -147,6 +147,7 @@ GEM
     orm_adapter (0.5.0)
     parser (2.6.2.0)
       ast (~> 2.4.0)
+    pg (0.18.4)
     powerpack (0.1.2)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -320,6 +321,7 @@ DEPENDENCIES
   gon
   jquery-rails
   listen (~> 3.0.5)
+  pg (~> 0.18)
   pry-byebug
   pry-coolline
   pry-doc

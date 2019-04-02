@@ -44,13 +44,20 @@ function countdown( elementName, minutes, seconds )
     updateTimer();
 }
 
-countdown( "countdown", 1, 2 );
+countdown( "countdown", 1, 1 );
 
 var minutesLabel = document.getElementById("minutes");
 var secondsLabel = document.getElementById("seconds");
 
-var totalSeconds = gon.sign_time;
-setInterval(setTime, 1000);
+if (gon.length > 0) {
+    var totalSeconds = gon.sign_time;
+}
+else {
+    var totalSeconds = 0;   
+}
+if (minutesLabel != null) {
+    setInterval(setTime, 1000);
+}
 
 function setTime()
 {
