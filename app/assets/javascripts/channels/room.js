@@ -15,7 +15,7 @@
       App.cable.subscriptions.remove(this)
     },
     received: function (data) {
-      if (data["username"] != "undefined") {
+      if (data["username"] != "undefined" && data["content"] != "undefined" ) {
         $messageArea.append(this.renderMessage(data));
         scrollToBottom();
       }
