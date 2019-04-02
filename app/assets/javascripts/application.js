@@ -16,6 +16,15 @@
 //= require_tree .
 //= require_tree ./channels
 
+window.onbeforeunload = function () {
+    if (location.href.split("/")[location.href.split("/").length - 1] != "1") {
+        $.ajax({
+            url: "/rooms/make_invalid",
+            method: 'GET'
+        })
+    }
+};
+
 $(".chat-count-link").hide()
 function countdown( elementName, minutes, seconds )
 {

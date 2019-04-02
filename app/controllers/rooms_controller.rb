@@ -29,6 +29,11 @@ class RoomsController < ApplicationController
     end
   end
 
+  def make_invalid
+    current_user.user_sign_in_count.destroy
+    ActionCable.server.broadcast('valid_user', count: UserSignInCount.valid_users)
+  end
+
   def edit
     @room = Room.find(params[:id])
   end
