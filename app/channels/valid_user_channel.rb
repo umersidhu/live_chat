@@ -11,7 +11,7 @@ class ValidUserChannel < ApplicationCable::Channel
     count = UserSignInCount.valid_users
     ActionCable.server.broadcast('valid_user', count: count)
     if UserSignInCount.count > 0
-      if UserSignInCount.chats_time.to_i / 60 > 15
+      if UserSignInCount.chats_time.to_i / 60 > 14
         Message.destroy_all
         UserSignInCount.destroy_all
         user_count = User.count
