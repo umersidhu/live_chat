@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resources :messages, only: %i(create destroy) do
       collection { get 'old/:first_message_id' => 'messages#old', constraints: { first_message_id: /\d+/ } }
     end
+    collection do
+      get :make_invalid
+    end
   end
 
   root to: 'rooms#index'

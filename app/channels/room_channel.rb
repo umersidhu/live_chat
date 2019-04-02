@@ -5,11 +5,9 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    ActionCable.server.broadcast("room_#{params[:room_id]}", counter: count_unique_connections )
   end
 
   def update_students_counter
-    ActionCable.server.broadcast("room_#{params[:room_id]}", counter: count_unique_connections )
   end
 
   private

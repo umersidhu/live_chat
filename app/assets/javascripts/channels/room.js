@@ -9,10 +9,8 @@
 
   App.room = App.cable.subscriptions.create({channel: 'RoomChannel', room_id: roomId}, {
     connected: function() {
-      App.room.update_students_counter
     },
     disconnected: function() {
-      App.cable.subscriptions.remove(this)
     },
     received: function (data) {
       if (data["username"] != "undefined" && data["content"] != "undefined" ) {

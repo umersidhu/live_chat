@@ -7,6 +7,7 @@ class UserSignInCount < ApplicationRecord
   end
 
   def self.chats_time
+    return if first.blank?
     last_signin = first.created_at
     time_diffrence(last_signin)
   end  

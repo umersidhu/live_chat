@@ -5,10 +5,11 @@ class RoomsController < ApplicationController
     UserSignInCount.create!(user_id: current_user.id) if (current_user.present? && current_user.user_sign_in_count.blank?)
     @rooms = Room.all
     gon.sign_time = UserSignInCount.time_diffrence(current_user.current_sign_in_at)
-    return redirect_to room_path(Room.first) if UserSignInCount.valid_users > 2
+    return redirect_to room_path(Room.first) if UserSignInCount.valid_users >= 3
   end
 
   def show
+    gon.chats_time = UserSignInCount.chats_time
     gon.sign_time = UserSignInCount.time_diffrence(current_user.current_sign_in_at) if current_user.present?
     return redirect_to root_path if UserSignInCount.valid_users < 2
     messages

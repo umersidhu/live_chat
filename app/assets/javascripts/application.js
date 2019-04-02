@@ -73,3 +73,54 @@ function pad(val)
         return valString;
     }
 }
+
+
+var secondsRemaining;
+var intervalHandle;
+startCountdown();
+
+function resetPage() {
+    document.getElementById("inputArea").style.display = "block";
+}
+
+function tick() {
+    // grab the h1
+    var minuteDisplay = $(".minutes");
+    var secondsDisplay = $(".seconds")
+    
+    // turn seconds into mm:ss
+    var min = parseInt(Math.floor(secondsRemaining / 60));
+    var sec = parseInt(secondsRemaining - (min * 60));
+    
+    // add a leading zero (as a string value) if seconds less than 10
+    if (sec < 10) {
+        sec = "0" + sec;
+    }
+    // concatenate with colon
+    minuteDisplay.text(min);
+    secondsDisplay.text(sec);
+    secondsRemaining = parseInt(secondsRemaining)
+    // stop if down to zero
+    if (secondsRemaining === 0) {
+        App.valid_user.valid_user_count()
+        clearInterval(intervalHandle);
+        resetPage();
+    }
+    // subtract from seconds remaining
+    secondsRemaining--;
+}
+
+function startCountdown() {
+    // get contents of the "minutes" text box
+    var minutes = (15 * 60) - gon.chats_time;
+    // check if not a number
+    if (isNaN(minutes)) {
+        return;
+    }
+    // how many seconds?
+    secondsRemaining = minutes;
+    
+    // every second, call the "tick" function
+    intervalHandle = setInterval(tick, 1000);
+    // hide the form
+}
