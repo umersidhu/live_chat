@@ -15,9 +15,6 @@ class ValidUserChannel < ApplicationCable::Channel
         Message.destroy_all
         UserSignInCount.destroy_all
         user_count = User.count
-        if user_count > 0
-          User.destroy_all
-        end
         ActionCable.server.broadcast('valid_user', count: UserSignInCount.valid_users)
       end
     end
