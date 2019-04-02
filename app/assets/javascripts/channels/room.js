@@ -15,8 +15,10 @@
       App.cable.subscriptions.remove(this)
     },
     received: function (data) {
-      $messageArea.append(this.renderMessage(data));
-      scrollToBottom();
+      if (data["username"] != "undefined") {
+        $messageArea.append(this.renderMessage(data));
+        scrollToBottom();
+      }
     },
     renderMessage: function (data) { return messageItemTmpl(data.username, data.content); }
   });
